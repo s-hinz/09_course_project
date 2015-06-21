@@ -19,9 +19,9 @@ based on the following measures:
 - Petal width  
 
 It can predict three different Iris species:  
--- _Iris setosa_  
--- _Iris versicolor_  
--- _Iris virginica_
+- _Iris setosa_  
+- _Iris versicolor_  
+- _Iris virginica_
 
 How is this done?
 ========================================================
