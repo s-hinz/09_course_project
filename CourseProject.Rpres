@@ -1,10 +1,16 @@
 Iris classification
 ========================================================
-author: Silvia Hinz
+transition: linear
+author: S. Hinz
 date:   `r format(Sys.time(), "%d.%m.%Y")`
+
+The described application was created as Course Project for course "Developing Data Products" at Coursera.  
+It can be found [here] (https://s-hinz.shinyapps.io/CourseProject).
+
 
 What is the application about?
 ========================================================
+transition: rotate
 The application tries to predict the Iris species that a flower belongs to
 based on the following measures: 
 - Sepal length
@@ -13,22 +19,24 @@ based on the following measures:
 - Petal width
 
 It can predict three different Iris species:
-- Iris setosa
-- Iris versicolor
-- Iris virginica
+- _Iris setosa_
+- _Iris versicolor_
+- _Iris virginica_
 
 How is this done?
 ========================================================
+transition: fade
 The application uses a model that is based on the iris data set in R.  
 The data set contains data collected by Edgar Anderson (1935).  
 There are records for three different species, 50 for each of them:
-```{r, echo=FALSE}
+```{r}
 table(iris$Species)
 ```
 Each of the records includes sepal and petal length and width together with the respective species.
 
 How does the data look like?
 ========================================================
+transition: zoom
 ```{r, echo=FALSE}
 par(mfrow=c(2,2))
 boxplot(Sepal.Length ~ Species, data=iris, main="Sepal length")
@@ -37,10 +45,11 @@ boxplot(Petal.Length ~ Species, data=iris, main="Petal length")
 boxplot(Petal.Width ~ Species, data=iris, main="Petal width")
 ```
 ***
-You can see that the different species do have sepals and petals of different lengths.
+You can see that the different species have sepals and petals of different lengths and widths.
 
 How does the model look like?
 ========================================================
+transition: concave
 ```{r, echo=FALSE}
 library(randomForest)
 data(iris)
@@ -48,7 +57,7 @@ set.seed(12345)
 modFit <- randomForest(Species ~ ., data=iris)
 ```
 The prediction model was built using a Random Forest.  
-The model was trained on the whole iris data set.  
+The model was trained on all records of the iris data set.  
 On this data it managed to correctly predict `r sum(diag(modFit$confusion))/nrow(iris)*100`% of the records.  
 ```{r, echo=FALSE}
 modFit$confusion
