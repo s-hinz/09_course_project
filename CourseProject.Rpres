@@ -1,7 +1,7 @@
 Iris classification
 ========================================================
-transition: fade
-transition-speed: slow
+transition: rotate
+transition-speed: fast
 author: S. Hinz
 date:   `r format(Sys.time(), "%d.%m.%Y")`
 
@@ -12,22 +12,22 @@ It can be found [here] (https://s-hinz.shinyapps.io/CourseProject).
 What is the application about?
 ========================================================
 The application tries to predict the Iris species that a flower belongs to
-based on the following measures: 
-- Sepal length
-- Sepal width
-- Petal length
-- Petal width
+based on the following measures:  
+- Sepal length  
+- Sepal width  
+- Petal length  
+- Petal width  
 
-It can predict three different Iris species:
-- _Iris setosa_
-- _Iris versicolor_
-- _Iris virginica_
+It can predict three different Iris species:  
+-- _Iris setosa_  
+-- _Iris versicolor_  
+-- _Iris virginica_
 
 How is this done?
 ========================================================
-The application uses a model that is based on the iris data set in R.  
-The data set contains data collected by Edgar Anderson (1935).  
-There are records for three different species, 50 for each of them:
+The application uses a model that is based on R data set iris.  
+The data set contains data collected by Edgar Anderson.  
+It contains records for three different species, 50 for each of them:
 ```{r}
 table(iris$Species)
 ```
@@ -35,18 +35,18 @@ Each of the records includes sepal and petal length and width together with the 
 
 How does the data look like?
 ========================================================
-left: 75%
+left: 70%
 ```{r, echo=FALSE, fig.width=10}
 par(mfrow=c(2,2))
-boxplot(Sepal.Length ~ Species, data=iris, main="Sepal length")
-boxplot(Sepal.Width ~ Species, data=iris, main="Sepal width")
-boxplot(Petal.Length ~ Species, data=iris, main="Petal length")
-boxplot(Petal.Width ~ Species, data=iris, main="Petal width")
+boxplot(Sepal.Length ~ Species, data=iris, main="Sepal length", ylab="Size in cm")
+boxplot(Sepal.Width ~ Species, data=iris, main="Sepal width", ylab="Size in cm")
+boxplot(Petal.Length ~ Species, data=iris, main="Petal length", ylab="Size in cm")
+boxplot(Petal.Width ~ Species, data=iris, main="Petal width", ylab="Size in cm")
 ```
 ***
 You can see that the different species have sepals and petals of different lengths and widths.
 
-How does the model look like?
+How good is the model that is used?
 ========================================================
 ```{r, echo=FALSE}
 library(randomForest)
