@@ -1,0 +1,55 @@
+Iris classification
+========================================================
+author: Silvia Hinz
+date:   `r format(Sys.time(), "%d.%m.%Y")`
+
+What is the application about?
+========================================================
+The application tries to predict the Iris species that a flower belongs to
+based on the following measures: 
+- Sepal length
+- Sepal width
+- Petal length
+- Petal width
+
+It can predict three different Iris species:
+- Iris setosa
+- Iris versicolor
+- Iris virginica
+
+How is this done?
+========================================================
+The application uses a model that is based on the iris data set in R.  
+The data set contains data collected by Edgar Anderson (1935).  
+There are records for three different species, 50 for each of them:
+```{r, echo=FALSE}
+table(iris$Species)
+```
+Each of the records includes sepal and petal length and width together with the respective species.
+
+How does the data look like?
+========================================================
+```{r, echo=FALSE}
+par(mfrow=c(2,2))
+boxplot(Sepal.Length ~ Species, data=iris, main="Sepal length")
+boxplot(Sepal.Width ~ Species, data=iris, main="Sepal width")
+boxplot(Petal.Length ~ Species, data=iris, main="Petal length")
+boxplot(Petal.Width ~ Species, data=iris, main="Petal width")
+```
+***
+You can see that the different species do have sepals and petals of different lengths.
+
+How does the model look like?
+========================================================
+```{r, echo=FALSE}
+library(randomForest)
+data(iris)
+set.seed(12345)
+modFit <- randomForest(Species ~ ., data=iris)
+```
+The prediction model was built using a Random Forest.  
+The model was trained on the whole iris data set.  
+On this data it managed to correctly predict `r sum(diag(modFit$confusion))/nrow(iris)*100`% of the records.  
+```{r, echo=FALSE}
+modFit$confusion
+```
